@@ -10,10 +10,11 @@ import { onSnapshot, collection, query } from "firebase/firestore";
 
 function Home() {
     useEffect(() => {
-        const q = query(collection(db, "movies"));
-        const unsub = onSnapshot(q, (snapshot) => {
-            console.log(snapshot.docs);
-        })
+        const q = query(collection(db, "Movies"))
+        const unsub = onSnapshot(q, (querySnapshot) => {
+            console.log(querySnapshot);
+        });
+
     }, []);
 
     return (
