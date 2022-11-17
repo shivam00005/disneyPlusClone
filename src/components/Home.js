@@ -6,13 +6,23 @@ import Movies from './Movies'
 import { useEffect } from 'react'
 import db from '../firebase'
 import { onSnapshot, collection, query } from "firebase/firestore";
+import { useDispatch } from 'react-redux'
+import { setMovies } from '../features/Movies/movieSlice'
+
+
 
 
 function Home() {
+    const dispatch = useDispatch();
+
     useEffect(() => {
         const q = query(collection(db, "Movies"))
         const unsub = onSnapshot(q, (querySnapshot) => {
-            console.log(querySnapshot);
+            let tempMovie = querySnapshot.docs.map((doc) => {
+                return { id: doc.id, ...doc.data() }
+            })
+
+            dispatch(setMovies(tempMovie));
         });
 
     }, []);

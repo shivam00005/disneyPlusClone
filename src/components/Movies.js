@@ -1,29 +1,32 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
+import { selectMovies } from '../features/Movies/movieSlice'
+import { useSelector } from 'react-redux'
+function Movies() {
+    const movies = useSelector(selectMovies);
 
-function Moies() {
     return (
         <Container>
             <h4>Recommended for You</h4>
             <Content>
-                <Wrap>
-                    <img src="/images/f_fb.jpeg" />
-                </Wrap>
-                <Wrap>
-                    <img src="/images/f_fb.jpeg" />
-                </Wrap>
-                <Wrap>
-                    <img src="/images/f_fb.jpeg" />
-                </Wrap>
-                <Wrap>
-                    <img src="/images/f_fb.jpeg" />
-                </Wrap>
+                {movies &&
+                    movies.map((movie) => (
+                        <Wrap key={movie.id}>
+                            <Link to={`/detail/${movie.id}`}>
+                                <img src={movie.CardImg} />
+                            </Link>
+                        </Wrap>
+                    ))
+
+                }
+
             </Content>
         </Container>
     )
 }
 
-export default Moies
+export default Movies
 
 const Container = styled.div`
 

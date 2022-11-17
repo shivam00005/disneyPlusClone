@@ -1,43 +1,71 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import { useParams } from 'react-router-dom'
+import db from "../firebase"
+import { doc, getDoc } from "firebase/firestore";
 
 function Detail() {
+    const { id } = useParams();
+    const [Movie, setMovie] = useState()
+    useEffect(() => {
+
+        const docRef = doc(db, "Movies", id);
+        const docSnap = getDoc(docRef);
+        docSnap.then((doc) => {
+            if (doc.exists) {
+
+                setMovie(doc.data());
+
+
+            }
+        })
+
+
+    }, [id])
+    // console.log(movie.BackgroundImg);
+    console.log(Movie);
     return (
         <Conatiner>
-            <BackGround >
-                <img src="/images/ben-10.jpg" />
-            </BackGround>
 
-            <ImageTittle>
-                <img src="/images/logo.svg" />
-            </ImageTittle>
+            {
+                Movie && (
+                    <>
+                        <BackGround >
+                            <img src={Movie.BackgroundImg} />
+                        </BackGround>
 
-            <Controls>
-                <PlayButton>
-                    <img src='/images/play-icon-black.png' />
-                    <span>PLAY</span>
+                        <ImageTittle>
+                            <img src={Movie.TitleImg} />
+                        </ImageTittle>
 
-                </PlayButton>
-                <TrailerButton>
-                    <img src='/images/play-icon-white.png' />
-                    <span>TRAILER</span>
-                </TrailerButton>
-                <AddButton>
-                    <span>+</span>
-                </AddButton>
-                <GroupWatchButton>
-                    <img src="/images/group-icon.png" />
-                </GroupWatchButton>
-            </Controls>
+                        <Controls>
+                            <PlayButton>
+                                <img src='/images/play-icon-black.png' />
+                                <span>PLAY</span>
 
-            <SubTittle>
-                2018 . 7m . Family, Fantasy, Kids, Animation
-            </SubTittle>
+                            </PlayButton>
+                            <TrailerButton>
+                                <img src='/images/play-icon-white.png' />
+                                <span>TRAILER</span>
+                            </TrailerButton>
+                            <AddButton>
+                                <span>+</span>
+                            </AddButton>
+                            <GroupWatchButton>
+                                <img src="/images/group-icon.png" />
+                            </GroupWatchButton>
+                        </Controls>
 
-            <Description>
-                Personality. Initially cocky, childish and arrogant, Ben's immaturity and attention-seeking behavior often led him to joke around regardless of the situation, although most of this attitude comes from Ben using humor to mask his fears.
-            </Description>
+                        <SubTittle>
+                            {Movie.Genres}
+                        </SubTittle>
 
+                        <Description>
+                            {Movie.Description}
+                        </Description>
+                    </>
+                )
+            }
         </Conatiner>
     )
 }
