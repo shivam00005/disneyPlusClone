@@ -6,7 +6,7 @@ import { doc, getDoc } from "firebase/firestore";
 
 function Detail() {
     const { id } = useParams();
-    const [Movie, setMovie] = useState()
+    const [Movie, setMovie] = useState({});
     useEffect(() => {
 
         const docRef = doc(db, "Movies", id);
@@ -18,41 +18,45 @@ function Detail() {
 
 
             }
-        })
+        }).catch((error) => {
+            console.log("Error getting document:", error);
+        });
 
 
     }, [id])
-    // console.log(movie.BackgroundImg);
-    console.log(Movie);
+
+
     return (
         <Conatiner>
 
             {
                 Movie && (
+
                     <>
+
                         <BackGround >
-                            <img src={Movie.BackgroundImg} />
+                            <img src={Movie.BackgroundImg} alt={Movie.Title} />
                         </BackGround>
 
                         <ImageTittle>
-                            <img src={Movie.TitleImg} />
+                            <img src={Movie.TitleImg} alt={Movie.Title} />
                         </ImageTittle>
 
                         <Controls>
                             <PlayButton>
-                                <img src='/images/play-icon-black.png' />
+                                <img src='/images/play-icon-black.png' alt='play' />
                                 <span>PLAY</span>
 
                             </PlayButton>
                             <TrailerButton>
-                                <img src='/images/play-icon-white.png' />
+                                <img src='/images/play-icon-white.png' alt='play' />
                                 <span>TRAILER</span>
                             </TrailerButton>
                             <AddButton>
                                 <span>+</span>
                             </AddButton>
                             <GroupWatchButton>
-                                <img src="/images/group-icon.png" />
+                                <img src="/images/group-icon.png" alt='group' />
                             </GroupWatchButton>
                         </Controls>
 

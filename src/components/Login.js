@@ -5,7 +5,7 @@ function Login() {
     return (
         <Container>
             <Content>
-                <Logo1 src="/images/cta-logo-one.svg" />
+                <Logo1 src="/images/cta-logo-one.svg" alt='image' />
 
                 <SignUp>
                     GET ALL THERE
@@ -14,7 +14,7 @@ function Login() {
                     Get 12 months for 10 with an annual subscription. Savings when compared to cost of monthly subscription.
 
                 </Description>
-                <Logo2 src="/images/cta-logo-two.png" />
+                <Logo2 src="/images/cta-logo-two.png" alt='image' />
 
             </Content>
         </Container>

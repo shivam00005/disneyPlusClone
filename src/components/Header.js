@@ -73,15 +73,20 @@ function Header() {
                     :
                     <>
                         <Navmenu>
-                            <a><img src="/images/home-icon.svg" /><span>Home</span></a>
-                            <a><img src="/images/search-icon.svg" /><span>Search</span></a>
-                            <a><img src="/images/watchlist-icon.svg" /><span>Watchlist</span></a>
-                            <a><img src="/images/original-icon.svg" /><span>Originals</span></a>
-                            <a><img src="/images/movie-icon.svg" /><span>Movies</span></a>
-                            <a><img src="/images/series-icon.svg" /><span>Series</span></a>
+                            <a href='#'><img src="/images/home-icon.svg" alt="home" /><span>Home</span></a>
+                            <a href='#'><img src="/images/search-icon.svg" alt="search" /><span>Search</span></a>
+                            <a href='#'><img src="/images/watchlist-icon.svg" alt="watchlist" /><span>Watchlist</span></a>
+                            <a href='#'><img src="/images/original-icon.svg" alt="originals" /><span>Originals</span></a>
+                            <a href='#'><img src="/images/movie-icon.svg" alt="movie" /><span>Movies</span></a>
+                            <a href='#'><img src="/images/series-icon.svg" alt="series" /><span>Series</span></a>
                         </Navmenu>
 
-                        <UserImg onClick={signOut} src="/images/images.png" atl='' /></>
+                        <UserImg onClick={signOut} src={userPhoto} atl='profilepicture' />
+
+
+
+
+                    </>
             }
 
 
@@ -94,45 +99,47 @@ export default Header
 
 const Nav = styled.div`
 
-height:70px;
-background-color:#090b13;
-display:flex;
-align-items:center;
-padding:0 36px;
-overflow-x:hidden;
-`
+            height:70px;
+            background-color:#090b13;
+            display:flex;
+            align-items:center;
+            padding:0 36px;
+            overflow-x:hidden;
+            `
 
     ;
 
 const Logo = styled.img`
-width:80px;
-`;
+            width:80px;
+            `;
 
 const Navmenu = styled.div`
-display:flex;
-flex:1;
-margin-left:25px;
-align-items:center;
+            display:flex;
+            flex:1;
+            margin-left:25px;
+            align-items:center;
 
-a{
-    display:flex;
-    align-items:center;
-    padding:0 12px;
-    cursor:pointer;
+            a{
+            display:flex;
+            align-items:center;
+            padding:0 12px;
+            cursor:pointer;
+            color:white;
+            text-decoration:none;
 
-    img{
-        height:20px;
+            img{
+                height:20px;
 
     }
 
-    span{
-        text-transform:uppercase;
-        font-size:13px;
-        letter-spacing:1.24px;
-        position:relative;
+            span{
+            text - transform:uppercase;
+            font-size:13px;
+            letter-spacing:1.24px;
+            position:relative;
 
-        &:after{
-            content:"";
+            &:after{
+             content:"";
             height:2px;
             background:white;
             position:absolute;
@@ -149,42 +156,46 @@ a{
        
     }
 
-    &:hover{
-        span:after{
-            transform:scaleX(1);
+            &:hover{
+                span:after{
+                transform:scaleX(1);
             opacity:1;
             
         }
     }
 }
-`;
+            `;
+
+
 
 const UserImg = styled.img`
-width:48px;
-height:48px;
-border-radius:50%;
-cursor:pointer;
-`;
+            width:48px;
+            height:48px;
+            border-radius:50%;
+            cursor:pointer;
+        
+           
+            `;
 
 const Login = styled.div`
-border: 1px solid #f9f9f9;
-padding:8px 16px;
-border-radius:4px;
-letter-spacing:1.5px;
-text-transform:uppercase;
-background-color:rgba(0,0,0, 0.6);
-transition: all 0.2s ease 0s;
-cursor:pointer;
+            border: 1px solid #f9f9f9;
+            padding:8px 16px;
+            border-radius:4px;
+            letter-spacing:1.5px;
+            text-transform:uppercase;
+            background-color:rgba(0,0,0, 0.6);
+            transition: all 0.2s ease 0s;
+            cursor:pointer;
 
-&:hover{
-    background-color : #f9f9f9;
-    color:#000;
-    border-radius:transparent;
+            &:hover{
+                background-color : #f9f9f9;
+            color:#000;
+            border-radius:transparent;
 }
-`;
+            `;
 
 const LoginContainer = styled.div`
-flex:1;
-display:flex;
-justify-content:flex-end;
-`
+            flex:1;
+            display:flex;
+            justify-content:flex-end;
+            `;
