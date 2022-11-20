@@ -11,15 +11,18 @@ const Originals = (props) => {
     <Container>
       <h4>Originals</h4>
       <Content>
-        {movies &&
-          movies.map((movie, key) => (
-            <Wrap key={key}>
-              {movie.id}
-              <Link to={`/detail/` + movie.id}>
-                <img src={movie.CardImg} alt={movie.Title} />
-              </Link>
-            </Wrap>
-          ))}
+        {
+          movies && movies.map((movie, index) => {
+            return (
+              <Wrap key={index}>
+                <Link to={"/detail/" + movie.id}>
+                  {movie.id}
+                  <img src={movie.CardImg} alt={movie.Title} />
+                </Link>
+              </Wrap>
+            )
+          })
+        }
       </Content>
     </Container>
   );

@@ -5,7 +5,7 @@ import Home from './components/Home';
 import Detail from './components/Detail';
 import Login from './components/Login';
 import {
-  BrowserRouter as Router,
+  BrowserRouter,
   Routes,
   Route,
 } from "react-router-dom";
@@ -13,19 +13,17 @@ import {
 
 function App() {
   return (
-    <div className="App">
-      <Router>
+    <BrowserRouter>
+      <div className="App">
         <Header />
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route exact path="/detail/:id" element={<Detail />} />
-          <Route exact path="/login" element={<Login />} />
-
+          <Route path="/detail/:id" element={<Detail />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
 
-      </Router>
-
-    </div>
+      </div>
+    </BrowserRouter>
   );
 }
 

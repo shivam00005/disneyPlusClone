@@ -2,29 +2,33 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { useParams } from 'react-router-dom'
 import db from "../firebase"
-import { doc, getDoc } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 
 function Detail() {
     const { id } = useParams();
-    const [Movie, setMovie] = useState({});
+    const [Movie, setDetailData] = useState({});
+
+
+    const fetchMovie = async (ID) => {
+        try {
+            const querySnapshot = await getDocs(collection(db, "movies"));
+            querySnapshot.forEach(doc => {
+                if (doc.id === ID) {
+                    return setDetailData((doc.data()));
+                }
+            });
+        } catch (error) {
+            alert(error.message)
+        }
+    };
+
     useEffect(() => {
+        fetchMovie(id);
 
-        const docRef = doc(db, "Movies", id);
-        const docSnap = getDoc(docRef);
-        docSnap.then((doc) => {
-            if (doc.exists) {
-
-                setMovie(doc.data());
-
-
-            }
-        }).catch((error) => {
-            console.log("Error getting document:", error);
-        });
-
-
+        return () => {
+            setDetailData({});
+        };
     }, [id])
-
 
     return (
         <Conatiner>

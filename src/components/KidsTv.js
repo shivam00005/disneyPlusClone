@@ -1,29 +1,35 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import {
+  Link
+} from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectKidsTV } from "../features/Movies/movieSlice";
 
+
 const KidsTv = (props) => {
-    const movies = useSelector(selectKidsTV);
+  const movies = useSelector(selectKidsTV);
 
 
-    return (
-        <Container>
-            <h4>KidsTv</h4>
-            <Content>
-                {movies &&
-                    movies.map((movie, key) => (
-                        <Wrap key={key}>
-                            {movie.id}
-                            <Link to={`/detail/` + movie.id}>
-                                <img src={movie.CardImg} alt={movie.Title} />
-                            </Link>
-                        </Wrap>
-                    ))}
-            </Content>
-        </Container>
-    );
+  return (
+    <>
+      <Container>
+        <h4>KidsTv</h4>
+        <Content>
+          {movies &&
+            movies.map((movie, key) => (
+              <Wrap key={key}>
+                {movie.id}
+                <Link to={`/detail/` + movie.id}>
+                  <img src={movie.CardImg} alt={movie.Title} />
+                </Link>
+              </Wrap>
+            ))}
+        </Content>
+      </Container>
+
+    </>
+  );
 };
 
 const Container = styled.div`

@@ -6,7 +6,6 @@ import { selectNewDisney } from "../features/Movies/movieSlice";
 
 const NewDisney = (props) => {
   const movies = useSelector(selectNewDisney);
-  console.log(movies, ":🛢️");
   return (
     <Container>
       <h4>New to Disney+</h4>

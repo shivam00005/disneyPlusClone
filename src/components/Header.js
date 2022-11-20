@@ -73,12 +73,12 @@ function Header() {
                     :
                     <>
                         <Navmenu>
-                            <a href='#'><img src="/images/home-icon.svg" alt="home" /><span>Home</span></a>
-                            <a href='#'><img src="/images/search-icon.svg" alt="search" /><span>Search</span></a>
-                            <a href='#'><img src="/images/watchlist-icon.svg" alt="watchlist" /><span>Watchlist</span></a>
-                            <a href='#'><img src="/images/original-icon.svg" alt="originals" /><span>Originals</span></a>
-                            <a href='#'><img src="/images/movie-icon.svg" alt="movie" /><span>Movies</span></a>
-                            <a href='#'><img src="/images/series-icon.svg" alt="series" /><span>Series</span></a>
+                            <a href=''><img src="/images/home-icon.svg" alt="home" /><span>Home</span></a>
+                            <a href=''><img src="/images/search-icon.svg" alt="search" /><span>Search</span></a>
+                            <a href=''><img src="/images/watchlist-icon.svg" alt="watchlist" /><span>Watchlist</span></a>
+                            <a href=''><img src="/images/original-icon.svg" alt="originals" /><span>Originals</span></a>
+                            <a href=''><img src="/images/movie-icon.svg" alt="movie" /><span>Movies</span></a>
+                            <a href=''><img src="/images/series-icon.svg" alt="series" /><span>Series</span></a>
                         </Navmenu>
 
                         <UserImg onClick={signOut} src={userPhoto} atl='profilepicture' />
