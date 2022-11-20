@@ -34,7 +34,7 @@ function Header() {
                 nevigate('/login')
             }
         })
-    })
+    }, [userName])
     const signIn = () => {
         const auth = getAuth();
         const provider = new GoogleAuthProvider();

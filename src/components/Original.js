@@ -15,7 +15,7 @@ const Originals = (props) => {
           movies && movies.map((movie, index) => {
             return (
               <Wrap key={index}>
-                <Link to={"/detail/" + movie.id}>
+                <Link to={`/detail/${movie.id}`}>
                   {movie.id}
                   <img src={movie.CardImg} alt={movie.Title} />
                 </Link>

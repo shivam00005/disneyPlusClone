@@ -11,9 +11,11 @@ function Detail() {
 
     const fetchMovie = async (ID) => {
         try {
-            const querySnapshot = await getDocs(collection(db, "movies"));
+            const querySnapshot = await getDocs(collection(db, "Movies"));
             querySnapshot.forEach(doc => {
-                if (doc.id === ID) {
+
+                if (doc.id == ID) {
+                    console.log(doc.data())
                     return setDetailData((doc.data()));
                 }
             });
@@ -29,7 +31,6 @@ function Detail() {
             setDetailData({});
         };
     }, [id])
-
     return (
         <Conatiner>
 

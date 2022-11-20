@@ -5,25 +5,25 @@ import { useSelector } from "react-redux";
 import { selectTrending } from "../features/Movies/movieSlice";
 
 const Trending = (props) => {
-    const movies = useSelector(selectTrending);
+  const movies = useSelector(selectTrending);
 
 
-    return (
-        <Container>
-            <h4>Trending</h4>
-            <Content>
-                {movies &&
-                    movies.map((movie, key) => (
-                        <Wrap key={key}>
-                            {movie.id}
-                            <Link to={`/detail/` + movie.id}>
-                                <img src={movie.CardImg} alt={movie.Title} />
-                            </Link>
-                        </Wrap>
-                    ))}
-            </Content>
-        </Container>
-    );
+  return (
+    <Container>
+      <h4>Trending</h4>
+      <Content>
+        {movies &&
+          movies.map((movie, key) => (
+            <Wrap key={key}>
+              {movie.id}
+              <Link to={`/detail/${movie.id}`}>
+                <img src={movie.CardImg} alt={movie.Title} />
+              </Link>
+            </Wrap>
+          ))}
+      </Content>
+    </Container>
+  );
 };
 
 const Container = styled.div`
