@@ -16,7 +16,6 @@ import { setMovies } from '../features/Movies/movieSlice'
 
 
 
-
 function Home() {
     const dispatch = useDispatch();
     let recommends = [];
@@ -30,6 +29,7 @@ function Home() {
         const q = query(collection(db, "Movies"))
         const unsub = onSnapshot(q, (querySnapshot) => {
             querySnapshot.docs.map((doc) => {
+
                 switch (doc.data().type) {
                     case "popular":
                         recommends = [...recommends, { id: doc.id, ...doc.data() }];
@@ -69,6 +69,7 @@ function Home() {
 
     }, []);
 
+
     return (
         <Container>
             <ImageSlider />
@@ -86,20 +87,18 @@ function Home() {
 export default Home
 
 const Container = styled.main`
-min-height:calc(100vh - 250px);
-padding: 0 calc(3.5vw + 5px);
-position:relative;
-overflow-x:hidden;
-
-&:before{
+position: relative;
+min-height: calc(100vh - 210px);
+overflow-x: hidden;
+display: block;
+top: 70px;
+padding: 10px calc(2.7vw + 5px);
+&:after {
     background:url("/images/home-background.png") center center / cover no-repeat fixed;
-    content:"";
-    position:absolute;
-    top:0;
-    right:0;
-    bottom:0;
-    left:0;
-    z-index:-1;
-
+    content: "";
+    position: absolute;
+    inset: 0px;
+    opacity: 1;
+    z-index: -1;
 }
 `;

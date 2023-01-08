@@ -4,9 +4,24 @@ import { useParams } from 'react-router-dom'
 import db from "../firebase"
 import { collection, getDocs } from "firebase/firestore";
 
+
+
+
+
 function Detail() {
+
+
     const { id } = useParams();
     const [Movie, setDetailData] = useState({});
+
+
+
+
+
+
+
+
+
 
 
     const fetchMovie = async (ID) => {
@@ -15,7 +30,6 @@ function Detail() {
             querySnapshot.forEach(doc => {
 
                 if (doc.id == ID) {
-                    console.log(doc.data())
                     return setDetailData((doc.data()));
                 }
             });
@@ -31,10 +45,12 @@ function Detail() {
             setDetailData({});
         };
     }, [id])
+
+
     return (
         <Conatiner>
-
             {
+
                 Movie && (
 
                     <>
@@ -59,6 +75,8 @@ function Detail() {
                             </TrailerButton>
                             <AddButton>
                                 <span>+</span>
+
+
                             </AddButton>
                             <GroupWatchButton>
                                 <img src="/images/group-icon.png" alt='group' />

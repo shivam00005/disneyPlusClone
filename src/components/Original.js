@@ -6,7 +6,6 @@ import { selectOriginal } from "../features/Movies/movieSlice";
 
 const Originals = (props) => {
   const movies = useSelector(selectOriginal);
-
   return (
     <Container>
       <h4>Originals</h4>
