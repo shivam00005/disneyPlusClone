@@ -19,7 +19,9 @@ The Disney+ Clone was created as a project to showcase the my skills in building
 
 ## :camera: Screenshots
 
-<img src="https://raw.githubusercontent.com/shivam00005/disneyPlusClone/main/screenshots/home.png" alt="home page">
+<img src="https://raw.githubusercontent.com/shivam00005/disneyPlusClone/main/landing%20page.png" alt="landing page">
+<img src="https://github.com/shivam00005/disneyPlusClone/blob/main/home-page.png" alt="home page">
+
 
 
 ## :information_desk_person: Demo
