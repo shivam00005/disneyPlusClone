@@ -1,4 +1,36 @@
-# Getting Started with Create React App and Redux
+
+# :computer: Desney Clone
+
+The Disney+ Clone is a web application designed to mimic the user interface of Disney's popular streaming service. The application was built using a combination of HTML, CSS, pure JavaScript, ReactJS, and React-Redux. It features a scrolling effect that allows users to easily navigate through different sections of the app.
+
+One of the key features of the application is the use of React-Carousel to display movie posters and other content. Users can also sign in using their Google account for a more personalized experience. The app has different sections for different types of movies, making it easy for users to find the content they want to watch.
+
+The Disney+ Clone was created as a project to showcase the my skills in building modern web applications using the latest web technologies. By replicating the user interface of a popular streaming service, the app offers users a familiar and engaging experience. Additionally, the project serves as a learning opportunity for the developer to improve their skills in building web applications.
+
+## :clipboard: Stack Used
+
+` HTML5 `
+` CSS3 `
+` Javascript `
+` Reactjs `
+` react-redux `
+
+
+
+## :camera: Screenshots
+
+<img src="https://raw.githubusercontent.com/shivam00005/disneyPlusClone/main/screenshots/home.png" alt="home page">
+
+
+## :information_desk_person: Demo
+
+Live link to visit desney clone website: https://disney-plus-clone-by-shivam.netlify.app
+
+
+
+## Installation
+
+### Getting Started with Create React App and Redux
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
@@ -44,3 +76,52 @@ You don't have to ever use `eject`. The curated feature set is suitable for smal
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## :wrench: Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+## :satellite: Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/shivam00005/disneyPlusClon
+```
+
+Go to the project directory
+
+```bash
+  cd my-project
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  npm run start
+```
+
+
+
+
+## :email:Feedback
+
+If you have any feedback, please reach out to us at sharmn6395960@gmail.com
+
+
+## :scroll:License
+
+Copyright (c) 2022 Shivam Sharma
+
+Licensed under the MIT License, available here: https://github.com/shivam00005/tesla-clone/blob/main/LICENSE
