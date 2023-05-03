@@ -1,17 +1,16 @@
-import React, { useEffect } from 'react'
-import styled from 'styled-components'
-import { Link } from 'react-router-dom';
+import React, { useEffect } from "react";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 import {
   selectUserName,
   selectUserPhoto,
   setUserLogin,
-  setSignOut
-
-} from '../features/users/userSlice'
-import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
-import { useSelector, useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom';
+  setSignOut,
+} from "../features/users/userSlice";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 function Header() {
   const dispatch = useDispatch();
@@ -23,94 +22,91 @@ function Header() {
     const auth = getAuth();
     auth.onAuthStateChanged(async (user) => {
       if (user) {
-        dispatch(setUserLogin({
-          name: user.displayName,
-          email: user.email,
-          photo: user.photoURL
+        dispatch(
+          setUserLogin({
+            name: user.displayName,
+            email: user.email,
+            photo: user.photoURL,
+          })
+        );
 
-        }))
-
-        nevigate('/')
+        nevigate("/");
       } else {
         dispatch(setSignOut());
-        nevigate('/login')
+        nevigate("/login");
       }
-    })
-  }, [userName])
+    });
+  }, [userName]);
   const signIn = () => {
     const auth = getAuth();
     const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        let user = result.user;
+    signInWithPopup(auth, provider).then((result) => {
+      let user = result.user;
 
-        dispatch(setUserLogin({
+      dispatch(
+        setUserLogin({
           name: user.displayName,
           email: user.email,
-          photo: user.photoURL
+          photo: user.photoURL,
+        })
+      );
 
-        }))
-
-
-
-        nevigate('/')
-
-      })
-  }
+      nevigate("/");
+    });
+  };
 
   const signOut = () => {
     const auth = getAuth();
-    auth.signOut()
-      .then(() => {
-        dispatch(setSignOut());
-        nevigate('/login')
-
-      })
-  }
+    auth.signOut().then(() => {
+      dispatch(setSignOut());
+      nevigate("/login");
+    });
+  };
   return (
     <Nav>
       <Logo src="/images/logo.svg" />
-      {
-        !userName ? (
+      {!userName ? (
+        <Login onClick={signIn}>Login</Login>
+      ) : (
+        <>
+          <NavMenu>
+            <Link to="/">
+              <img src="/images/home-icon.svg" alt="home" />
+              <span>Home</span>
+            </Link>
+            <Link to="#">
+              <img src="/images/search-icon.svg" alt="search" />
+              <span>Search</span>
+            </Link>
+            <Link to="#">
+              <img src="/images/watchlist-icon.svg" alt="watchlist" />
+              <span>Watchlist</span>
+            </Link>
+            <Link to="/original">
+              <img src="/images/original-icon.svg" alt="originals" />
+              <span>Originals</span>
+            </Link>
+            <Link to="/movies">
+              <img src="/images/movie-icon.svg" alt="movie" />
+              <span>Movies</span>
+            </Link>
+            <Link to="#">
+              <img src="/images/series-icon.svg" alt="series" />
+              <span>Series</span>
+            </Link>
+          </NavMenu>
 
-          <Login onClick={signIn}>Login</Login>
-
-        ) : (
-          <>
-            <NavMenu>
-
-
-              <Link to='/'><img src="/images/home-icon.svg" alt="home" /><span>Home</span></Link>
-              <Link to='#'><img src="/images/search-icon.svg" alt="search" /><span>Search</span></Link>
-              <Link to='#'><img src="/images/watchlist-icon.svg" alt="watchlist" /><span>Watchlist</span></Link>
-              <Link to='/original'><img src="/images/original-icon.svg" alt="originals" /><span>Originals</span></Link>
-              <Link to='/movies'><img src="/images/movie-icon.svg" alt="movie" /><span>Movies</span></Link>
-              <Link to='#'><img src="/images/series-icon.svg" alt="series" /><span>Series</span></Link>
-
-
-
-            </NavMenu>
-
-            <SignOut>
-              <UserImg src={userPhoto} alt={userName} />
-              <DropDown>
-                <span onClick={signOut}>Sign out</span>
-              </DropDown>
-            </SignOut>
-
-
-
-          </>
-        )
-      }
-
-
-
-    </Nav >
-  )
+          <SignOut>
+            <UserImg src={userPhoto} alt={userName} />
+            <DropDown>
+              <span onClick={signOut}>Sign out</span>
+            </DropDown>
+          </SignOut>
+        </>
+      )}
+    </Nav>
+  );
 }
-
-
 
 const Nav = styled.nav`
   position: fixed;
@@ -160,11 +156,10 @@ const NavMenu = styled.div`
       min-width: 30px;
       width: 30px;
       z-index: auto;
-     
     }
     span {
       color: rgb(249, 249, 249);
-      font-size:1.2rem;
+      font-size: 1.2rem;
       letter-spacing: 1.42px;
       line-height: 1.08;
       padding: 2px 0px;
@@ -195,9 +190,9 @@ const NavMenu = styled.div`
       }
     }
   }
-   @media (max-width: 768px) {
+  @media (max-width: 768px) {
     display: none;
-  } 
+  }
 `;
 
 const Login = styled.a`
@@ -208,6 +203,7 @@ const Login = styled.a`
   border: 1px solid #f9f9f9;
   border-radius: 4px;
   transition: all 0.2s ease 0s;
+  cursor: pointer;
   &:hover {
     background-color: #f9f9f9;
     color: #000;
